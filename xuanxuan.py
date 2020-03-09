@@ -25,7 +25,7 @@ def login():
         return render_template('login.html',cont=cont)
 
 #注册
-@app.route('/loginUp')
+@app.route('/loginUp',methods=['GET','POST'])
 def loginUp():
     cont = {}
     if request.method == 'POST':
@@ -33,7 +33,6 @@ def loginUp():
         if cont['password'] == request.form['password2']:
             cont['user'] = request.form['user']
             cont['name'] = request.form['name']
-            cont['password'] = request.form['password']
             cont['email'] = request.form['email']
             cont['phone'] = request.form['phone']
             cont = back.loginUpVerify(cont)
