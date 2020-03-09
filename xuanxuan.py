@@ -39,6 +39,8 @@ def loginUp():
             cont = back.loginUpVerify(cont)
             if cont['In']:
                 return redirect(url_for('login'))
+            else:
+                return render_template('loginUp.html')
     else:
         return render_template('loginUp.html')
 
