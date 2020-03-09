@@ -1,0 +1,5 @@
+flask
+openpyxl
+lxml
+xlrd
+pymysql

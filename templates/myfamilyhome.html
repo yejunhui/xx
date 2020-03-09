@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- Website template form http://www.cssmoban.com/ -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Index-MyFamily</title>
+	<link rel="stylesheet" href="/static/myfamilyhome/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<div>
+			<div id="logo">
+				<a href="{{url_for('index')}}"><span>MyFamily</span></a>
+			</div>
+			<ul id="navigation">
+				<li class="selected">
+					<a href="{{url_for('index')}}">时间轴</a>
+				</li>
+				<li>
+					<a href="about.html">图集</a>
+				</li>
+				<li>
+					<a href="answer.html">视频集</a>
+				</li>
+				<li class="active">
+					<a href="{{url_for('myMes')}}">{{cont.name}}</a>
+				</li>
+				<li>
+					<a href="https://www.baidu.com/">帮助</a>
+				</li>
+				<li>
+					<a href="{{url_for('cls')}}">退出</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="contents">
+		<div id="adbox">
+			<img src="/static/myfamilyhome/images/0day.jpg" alt="Img" style="width:376px;height:307px;">
+			<h1>Hello!</h1>
+			<p>
+				I was born on December 2, 2019 at 0:20.<br>I am very naughty!
+			</p>
+
+		</div>
+		<div id="featured" class="body">
+			<div id="main">
+				<h1>Blog</h1>
+				<ul>
+					<li>
+						<img src="/static/myfamilyhome/images/0day1.jpg" alt="Img" style="width:376px;height:241px;"> <span class="time">Feb<br> 25</span>
+						<p>
+							<em><a href="index.html">This is just a place holder</a></em> You can remove any link to our website from this website template, you're free to use this website template without linking back to us. This is just a place holder, so you can see what the site would look like. You can replace all this text with your own text. This is just a place holder.
+						</p>
+					</li>
+					<li>
+						<span class="time">Mar<br> 17</span>
+						<p>
+							<em><a href="index.html">The place holder</a></em> so you can see what the site would look like. This is just a place holder.
+						</p>
+					</li>
+					<li>
+						<span class="time">Mar<br> 30</span>
+						<p>
+							<em><a href="index.html">The place holder</a></em> so you can see what the site would look like. This is just a place holder. This is just a place holder.
+						</p>
+					</li>
+					<li>
+						<span class="time">Apr<br> 1</span>
+						<p>
+							<em><a href="index.html">The place holder</a></em> so you can see what the site would look like. This is just a place holder.
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div id="sidebar">
+				<h1>Q&amp;A</h1>
+				<ul>
+					<li>
+						<p>
+							<em><a href="answer.html">This is just a place holder</a></em> Aenean ornare purus at ante vulputate placerat dignissim nibh convallis. Cras commodo egestas nisl et tristique eros.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em><a href="answer.html">This is just a place holder</a></em> Aenean ornare purus at ante vulputate placerat dignissim nibh convallis. Cras commodo egestas nisl et tristique eros.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em><a href="answer.html">This is just a place holder</a></em> so you can see what the site would look like.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div>
+			<div>
+				<h2>About</h2>
+				<p>
+					This is just a place holder, so you can see what the site would look like. This is just a place holder, so you can see what the site would look like.
+				</p>
+			</div>
+			<div id="connect">
+				<h2>Get in touch</h2>
+				<a href="#" target="_blank" class="facebook"></a> <a href="#" target="_blank" class="twitter"></a> <a href="#" target="_blank" class="googleplus"></a>
+			</div>
+			<p>
+				© Copyright 2032All rights reserved&nbsp;- Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> .
+			</p>
+		</div>
+	</div>
+</body>
+</html>
