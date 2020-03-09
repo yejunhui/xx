@@ -27,8 +27,20 @@ def login():
 #注册
 @app.route('/loginUp')
 def loginUp():
-    cont= {}
-    return render_template('loginUp.html',cont=cont)
+    cont = {}
+    if request.method == 'POST':
+        cont['password'] = request.form['password']
+        if cont['password'] == request.form['password2']:
+            cont['user'] = request.form['user']
+            cont['name'] = request.form['name']
+            cont['password'] = request.form['password']
+            cont['email'] = request.form['email']
+            cont['phone'] = request.form['phone']
+            cont = back.loginUpVerify(cont)
+            if cont['In']:
+                return redirect(url_for('login'))
+    else:
+        return render_template('loginUp.html')
 
 #主页
 @app.route('/index',methods=['GET','POST'])
@@ -44,11 +56,48 @@ def index():
 
 
 
-#个人页
-@app.route('/my')
+# 个人信息
+@app.route('/my', methods=['GET', 'POST'])
 def myMes():
     cont = {}
-    return render_template('myMes.html',cont=cont)
+    cont['user']= user= request.cookies.get('username')
+    cont['ran2']= ran2= request.cookies.get('ran')+'.0'
+    cont['re'],cont['name']= back.index(user,ran2)
+    if cont['re']:
+        return render_template('myMes.html', cont=cont)
+    else:
+        return redirect(url_for('login'))
+
+
+# 个人信息修改
+@app.route('/vMyMes', methods=['GET', 'POST'])
+def vMyMes():
+    cont = {}
+    cont['user']= user= request.cookies.get('username')
+    cont['ran2']= ran2= request.cookies.get('ran')+'.0'
+    cont['re'],cont['name']= back.index(user,ran2)
+    if 'v' in request.args:
+        cont['v'] = request.args.get('v')
+    if cont['re']:
+        if request.method == 'POST':
+            if 'name' in request.form:
+                cont['name'] = request.form['name']
+                cont['email'] = request.form['email']
+                cont['phone'] = request.form['phone']
+            if 'password' in request.form:
+                if request.form['password'] == cont['password'] and request.form['npassword'] == request.form[
+                    'npassword2']:
+                    cont['password'] = request.form['npassword']
+            back.nowMod(cont)
+            return redirect(url_for('myMes'))
+        else:
+            if 'v' in request.args:
+                cont['v'] = cont['t'] = request.args['v']
+                return render_template('vMyMes.html', cont=cont)
+            else:
+                return redirect(url_for('myMes'))
+    else:
+        return redirect(url_for('login'))
 
 #退出
 @app.route('/cls')
