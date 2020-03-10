@@ -8,7 +8,7 @@ db1='app_gold'
 
 class pmysql:
     def __init__(self,h='localhost',user='user',password='123456',db='uransData'):
-        self.conn = pymysql.connect(host=h1,user=user1,password=password1,db=db1)
+        self.conn = pymysql.connect(host=h,user=user,password=password,db=db)
         self.conn.autocommit(True)
         self.cur = self.conn.cursor()
 
