@@ -47,10 +47,10 @@ def loginUp():
 @app.route('/index',methods=['GET','POST'])
 def index():
     cont= {}
-    cont['user']= user= request.cookies.get('username')
-    cont['ran2']= ran2= request.cookies.get('ran')+'.0'
-    cont['re'],cont['name']= back.index(user,ran2)
-    if cont['re']:
+    user= request.cookies.get('username')
+    ran2= request.cookies.get('ran')+'.0'
+    r,cont= back.index(user,ran2)
+    if r:
         return render_template('myfamilyhome.html',cont=cont)
     else:
         return redirect(url_for('login'))
@@ -61,10 +61,10 @@ def index():
 @app.route('/my', methods=['GET', 'POST'])
 def myMes():
     cont = {}
-    cont['user']= user= request.cookies.get('username')
-    cont['ran2']= ran2= request.cookies.get('ran')+'.0'
-    cont['re'],cont['name']= back.index(user,ran2)
-    if cont['re']:
+    user= request.cookies.get('username')
+    ran2= request.cookies.get('ran')+'.0'
+    r,cont= back.index(user,ran2)
+    if r:
         return render_template('myMes.html', cont=cont)
     else:
         return redirect(url_for('login'))
@@ -74,12 +74,13 @@ def myMes():
 @app.route('/vMyMes', methods=['GET', 'POST'])
 def vMyMes():
     cont = {}
-    cont['user']= user= request.cookies.get('username')
-    cont['ran2']= ran2= request.cookies.get('ran')+'.0'
-    cont['re'],cont['name']= back.index(user,ran2)
+    user= request.cookies.get('username')
+    ran2= request.cookies.get('ran')+'.0'
+    r,cont= back.index(user,ran2)
+
     if 'v' in request.args:
         cont['v'] = request.args.get('v')
-    if cont['re']:
+    if r:
         if request.method == 'POST':
             if 'name' in request.form:
                 cont['name'] = request.form['name']
@@ -107,7 +108,6 @@ def cls():
     resp= make_response(redirect(url_for('login')))
     resp.delete_cookie('user')
     resp.delete_cookie('ran')
-    #session.pop(request.cookies.get('user'))
     return resp
 
 #启动

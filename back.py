@@ -62,12 +62,17 @@ def index(user,ran):
     init()
     sql= 'select ran from users where user=\"%s\";'%user
     sql2='select name from users where user=\"%s\";'%user
+    sql3='select email from users where user=\"%s\";'%user
+    sql4='select phone from users where user=\"%s\";'%user
     ran2= p.msql(sql)[0][0]
-    name= p.msql(sql2)[0][0]
+    cont['user']= user
+    cont['name']= p.msql(sql2)[0][0]
+    cont['email']= p.msql(sql3)[0][0]
+    cont['phone']= p.msql(sql4)[0][0]
     if ran == str(ran2):
-        return True,name
+        return True,cont
     else:
-        return True,None
+        return True,{}
 
 
 #修改用户名
